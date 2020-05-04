@@ -21,8 +21,6 @@ type KafkaUser struct {
 	Status KafkaUserStatus `json:"status,omitempty"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // KafkaUserSpec is the spec for kafkauser resource
 type KafkaUserSpec struct {
 	Authentication Authentication `json:"authentication,omitempty"`
@@ -44,15 +42,11 @@ type Authentication struct {
 	Type string `json:"type,omitempty"`
 }
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // Authorization
 type Authorization struct {
 	Acls []Acls `json:"acls,omitempty"`
 	Type string `json:"type,omitempty"`
 }
-
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // Acls
 type Acls struct {
