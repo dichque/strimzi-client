@@ -7,6 +7,6 @@ require (
 	github.com/google/gofuzz v1.1.0 // indirect
 	k8s.io/api v0.17.4
 	k8s.io/apimachinery v0.17.4
-	k8s.io/client-go v0.17.4 // indirect
+	k8s.io/client-go v0.17.4
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )

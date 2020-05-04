@@ -42,6 +42,9 @@ check: fmt
 	@echo "==> Code Check..."
 	golangci-lint run --fast --tests
 
+clean_cache:
+	@${GO} clean -cache -modcache -i -r -x
+
 ## run this to install the needed tools in this make file (for the lint and check targets).
 ## You should only need to do this once.
 setup:
