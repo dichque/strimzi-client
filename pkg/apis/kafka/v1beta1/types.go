@@ -5,21 +5,6 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// +genclient
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// KafkaUser describes kafkauser resource type
-type KafkaUser struct {
-	metav1.TypeMeta `json:",inline"`
-
-	// +optional
-	metav1.ObjectMeta `json:"metadata,omitempty"`
-
-	Spec KafkaUserSpec `json:"spec"`
-
-	// +optional
-	Status KafkaUserStatus `json:"status,omitempty"`
-}
-
 // KafkaUserSpec is the spec for kafkauser resource
 type KafkaUserSpec struct {
 	Authentication Authentication `json:"authentication,omitempty"`
@@ -36,40 +21,57 @@ type KafkaUserStatus struct {
 	Secret             string       `json:secret,omitempty`
 }
 
-// Authentication
+// Authentication defines authentication
 type Authentication struct {
 	Type string `json:"type,omitempty"`
 }
 
-// Authorization
+// Authorization defines authorization
 type Authorization struct {
 	Acls []Acls `json:"acls,omitempty"`
 	Type string `json:"type,omitempty"`
 }
 
-// Acls
+// Acls defines acls
 type Acls struct {
-	Host      string    `json:"host,omitempty"`
-	Operation string    `json:"operation,omitempty"`
-	ResourceK ResourceK `json:"resource,omitempty"`
-	Type      string    `json:"type,omitempty"`
+	Host        string      `json:"host,omitempty"`
+	Operation   string      `json:"operation,omitempty"`
+	AclResource AclResource `json:"resource,omitempty"`
+	Type        string      `json:"type,omitempty"`
 }
 
-// ResourceK
-type ResourceK struct {
+// AclResource defines resource
+type AclResource struct {
 	Name        string `json:"name,omitempty"`
 	PatternType string `json:"patternType,omitempty"`
 	Type        string `json:"type,omitempty"`
 }
 
-// Quotas
+// Quotas defines quotas
 type Quotas struct {
 	ConsumerByteRate  *int32 `json:"consumerByteRate,omitempty"`
 	ProducerByteRate  *int32 `json:"producerByteRate,omitempty"`
 	RequestPercentage *int32 `json:"requestPercentage,omitempty"`
 }
 
+// +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// KafkaUser describes kafkauser resource type
+type KafkaUser struct {
+	metav1.TypeMeta `json:",inline"`
+
+	// +optional
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+
+	Spec KafkaUserSpec `json:"spec"`
+
+	// +optional
+	Status KafkaUserStatus `json:"status,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // KafkaUserList is a list of KafkaUser resources
 type KafkaUserList struct {
 	metav1.TypeMeta `json:",inline"`
@@ -79,6 +81,7 @@ type KafkaUserList struct {
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // KafkaTopic describes a KafkaTopic resource
 type KafkaTopic struct {
 	metav1.TypeMeta `json:",inline"`
@@ -116,6 +119,7 @@ type KafkaTopicStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // KafkaTopicList is a list of KafkaTopic resources
 type KafkaTopicList struct {
 	metav1.TypeMeta `json:",inline"`
