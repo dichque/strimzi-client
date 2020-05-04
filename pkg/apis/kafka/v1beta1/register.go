@@ -1,7 +1,7 @@
 package v1beta1
 
 import (
-	"gitscm.cisco.com/intps/strimzi-client/pkg/apis/kafka"
+	"github.com/dichque/strimzi-client/pkg/apis/kafka"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
