@@ -4,7 +4,7 @@
 
 # generation scripts do not support Go modules yet.
 export GO111MODULES=off
-ROOT_PACKAGE="gitscm.cisco.com/intps/strimzi-client"
+ROOT_PACKAGE="github.com/dichque/strimzi-client"
 # CUSTOM_RESOURCE_NAME :: the name of the custom resource that we're generating client code for
 CUSTOM_RESOURCE_NAME="kafka"
 # CUSTOM_RESOURCE_VERSION :: the version of the resource
