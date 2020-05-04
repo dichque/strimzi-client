@@ -7,7 +7,6 @@ import (
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // KafkaUser describes kafkauser resource type
 type KafkaUser struct {
 	metav1.TypeMeta `json:",inline"`
@@ -71,7 +70,6 @@ type Quotas struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // KafkaUserList is a list of KafkaUser resources
 type KafkaUserList struct {
 	metav1.TypeMeta `json:",inline"`
@@ -81,10 +79,8 @@ type KafkaUserList struct {
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // KafkaTopic describes a KafkaTopic resource
 type KafkaTopic struct {
-	// TypeMeta is the metadata for the resource, like kind and apiversion
 	metav1.TypeMeta `json:",inline"`
 
 	// +optional
@@ -120,7 +116,6 @@ type KafkaTopicStatus struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-
 // KafkaTopicList is a list of KafkaTopic resources
 type KafkaTopicList struct {
 	metav1.TypeMeta `json:",inline"`
